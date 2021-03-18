@@ -18,6 +18,8 @@ dependencies {
     compileOnly(Dependencies.Spigot.annotations)
     kapt(Dependencies.Spigot.annotations)
     compile(Dependencies.Kotlin.stdlib)
+    compile(Dependencies.Kotlin.Coroutines.core)
+    compile(Dependencies.Retrofit.core)
     testCompile(Dependencies.JUnit.core)
 }
 
