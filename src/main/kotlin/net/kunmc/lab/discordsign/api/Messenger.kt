@@ -17,7 +17,7 @@ class Messenger(private val service: DiscordService) {
         GlobalScope.launch {
             try {
                 val name = player.name
-                val image = "https://crafatar.com/avatars/${player.uniqueId}"
+                val image = "https://crafatar.com/avatars/${player.uniqueId}?overlay"
                 val id = plugin.config.getString(channelType.id)
                 val token = plugin.config.getString(channelType.token)
                 if (id != null && token != null) {
