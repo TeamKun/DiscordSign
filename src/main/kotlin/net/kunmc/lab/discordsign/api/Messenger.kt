@@ -6,13 +6,14 @@ import net.kunmc.lab.discordsign.ChannelType
 import org.bukkit.entity.Player
 import org.bukkit.plugin.java.JavaPlugin
 import retrofit2.HttpException
+import java.util.logging.Level
 
 class Messenger(private val service: DiscordService) {
     fun send(
-            player: Player,
-            message: String,
-            channelType: ChannelType,
-            plugin: JavaPlugin
+        player: Player,
+        message: String,
+        channelType: ChannelType,
+        plugin: JavaPlugin
     ) {
         GlobalScope.launch {
             try {
@@ -24,7 +25,9 @@ class Messenger(private val service: DiscordService) {
                     service.send(id, token, message, name, image)
                 }
             } catch (e: HttpException) {
+                plugin.logger.log(Level.WARNING, "Failed to send message to Discord: ${e.message}")
             } catch (e: Exception) {
+                plugin.logger.log(Level.WARNING, "Failed to send message to Discord: ${e.message}")
             }
         }
     }
