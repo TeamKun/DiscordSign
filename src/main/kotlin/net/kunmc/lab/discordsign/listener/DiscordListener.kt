@@ -38,7 +38,7 @@ class DiscordListener(private val plugin: JavaPlugin) : Listener {
 
     @EventHandler
     fun talkPlayer(event: AsyncPlayerChatEvent) {
-        val message = "「${event.message}」"
+        val message = event.message
         messenger.send(event.player, message, ChannelType.COMMENT, plugin)
     }
 
